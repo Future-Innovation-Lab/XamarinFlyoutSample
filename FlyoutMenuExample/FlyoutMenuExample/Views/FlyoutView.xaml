@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FlyoutPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:flyoutmenuexample="clr-namespace:FlyoutMenuExample" xmlns:behaviours="clr-namespace:FlyoutMenuExample.Behaviours" xmlns:converters="clr-namespace:FlyoutMenuExample.Converters"
+            x:Class="FlyoutMenuExample.Views.FlyoutView" Title="Flyout Demo">
+    <FlyoutPage.Flyout>
+                <ContentPage Title="Menu" Icon="hamburger.png" BackgroundColor="White" Padding="5">
+                    <ContentPage.Resources>
+                        <ResourceDictionary>
+                    <converters:ItemTappedEventArgsConverter x:Key="SelectedItemConverter" />
+                        </ResourceDictionary>
+                    </ContentPage.Resources>
+                    <StackLayout>
+                <Image HeightRequest="80" Source="uwclogo.png"/>
+                <ListView ItemsSource="{Binding MenuItems}" HasUnevenRows="True" SelectionMode="None">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="80"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="20"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Image HeightRequest="40" WidthRequest="40" Margin="10" BackgroundColor="Transparent" Source="{Binding ImageName}" Grid.RowSpan="3"/>
+                                            <Label Margin="15,0,0,0" Text="{Binding MenuItemName}"  Grid.Column="1" Grid.Row="1" FontSize="Medium"/>
+
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+
+                            </ListView.ItemTemplate>
+                            <ListView.Behaviors>
+                        <behaviours:EventToCommandBehavior EventName="ItemTapped" Command="{Binding NavigateCommand}" Converter="{StaticResource SelectedItemConverter}" />
+                            </ListView.Behaviors>
+                        </ListView>
+            </StackLayout>
+
+
+        </ContentPage>
+    </FlyoutPage.Flyout>
+    <FlyoutPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <flyoutmenuexample:MainView />
+            </x:Arguments>
+        </NavigationPage>
+    </FlyoutPage.Detail>
+</FlyoutPage>

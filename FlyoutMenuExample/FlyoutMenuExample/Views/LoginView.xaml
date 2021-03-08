@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlyoutMenuExample.Views.LoginView" Title="Login">
+    <StackLayout>
+        <Label VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Text="Make your own Login Page" FontAttributes="Bold" FontSize="Large" />
+        <Button Text="Login" VerticalOptions="EndAndExpand" Command="{Binding LoginCommand}" />
+
+    </StackLayout>
+</ContentPage>
