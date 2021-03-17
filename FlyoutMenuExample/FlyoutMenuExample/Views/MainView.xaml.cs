@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlyoutMenuExample.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace FlyoutMenuExample
         public MainView()
         {
             InitializeComponent();
+
+            BindingContext = new MainPageViewModel(Navigation);
         }
     }
 }

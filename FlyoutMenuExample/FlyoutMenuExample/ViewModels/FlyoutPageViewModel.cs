@@ -23,6 +23,7 @@ namespace FlyoutMenuExample.ViewModels
                 _menuItems = value; 
                 OnPropertyChanged(); }
         }
+
         public FlyoutPageViewModel(INavigation navigation) : base(navigation)
         {
             _securityService = DependencyService.Get<ISecurityService>();
